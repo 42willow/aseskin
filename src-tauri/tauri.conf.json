@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.tauri.app/config/2.0.0",
+  "$schema": "https://schema.tauri.app/config/2",
   "productName": "aseskin",
   "version": "0.1.0",
   "identifier": "com.aseskin.app",
@@ -15,7 +15,6 @@
         "title": "aseskin",
         "width": 800,
         "height": 600
-        
       }
     ],
     "security": {
