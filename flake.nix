@@ -47,12 +47,12 @@
           devShells.default = pkgs.mkShell {
             nativeBuildInputs = packages;
             buildInputs = libraries;
-            # shellHook = ''
-            #   LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
-            #   XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS
-            #   GIO_MODULE_DIR=${pkgs.glib-networking.out}/lib/gio/modules/
-            #   GIO_EXTRA_MODULES=${pkgs.glib-networking.out}/lib/gio/modules/
-            # '';
+            shellHook = ''
+              LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
+              XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS
+              GIO_MODULE_DIR=${pkgs.glib-networking.out}/lib/gio/modules/
+              GIO_EXTRA_MODULES=${pkgs.glib-networking.out}/lib/gio/modules/
+            '';
           };
         }
       );
