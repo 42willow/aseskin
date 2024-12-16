@@ -41,6 +41,8 @@
             cargo
             cargo-tauri
             nodejs
+            pnpm
+            rustc
           ];
         in
         {
