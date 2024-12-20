@@ -1,8 +1,14 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/core";
-  import { open } from '@tauri-apps/plugin-dialog';
-
-  // type FileType = "aseprite" | "minecraft" | "none";
+  import { open as openDialog } from '@tauri-apps/plugin-dialog';
+  import { open, BaseDirectory, readFile } from '@tauri-apps/plugin-fs';
+  import { SkinViewer } from "skinview3d";
+  import {
+    warn,
+    debug,
+    info,
+    error,
+  } from '@tauri-apps/plugin-log';
 
   let name = "";
   let greetMsg = "";
@@ -12,11 +18,22 @@
     greetMsg = await invoke("greet", { name });
   }
 
-  // async function openFile() {
-  //   file = await invoke("openFile");
-  // }
+  async function loadSkin(skin: Uint8Array) {
+    const base64String = btoa(String.fromCharCode(...new Uint8Array(skin)));
+    const skinUrl = `data:image/png;base64,${base64String}`;
+    // debug(skinUrl);
+
+    let skinViewer = new SkinViewer({
+      canvas: document.getElementById("skin_container") as HTMLCanvasElement,
+      width: 300,
+      height: 400,
+      skin: skinUrl,
+    });
+
+    return skinViewer;
+  }
   async function openFile() {
-    const file = await open({
+    const file = await openDialog({
       multiple: false,
       directory: false,
       filters: [
@@ -34,7 +51,14 @@
         }
       ]
     });
-    console.log(file);
+    if (file) {
+      debug(file);
+      const skin = await readFile(file);
+
+      let skinViewer = loadSkin(skin);
+    } else {
+      warn('No file selected');
+    }
   }
 </script>
 
@@ -49,6 +73,8 @@
   </form>
 
   <p>{greetMsg}</p>
+
+  <canvas id="skin_container"></canvas>
 </div>
 
 <style>
