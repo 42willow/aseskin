@@ -6,7 +6,7 @@
   <h1>Hello World</h1>
 </div>
 
-<style>
+<style lang="postcss">
   .sidebar {
     width: 100%;
     padding: 20px;

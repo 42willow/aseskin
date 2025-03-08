@@ -10,6 +10,10 @@
     "shell:allow-open",
     "dialog:default",
     "fs:default",
-    "log:default"
+    "log:default",
+    {
+      "identifier": "fs:allow-watch",
+      "allow": [{ "path": "$HOME/**" }]
+    }
   ]
 }
