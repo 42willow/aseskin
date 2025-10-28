@@ -1,7 +1,3 @@
-# Tauri + SvelteKit + TypeScript
+this got abandoned like most of my other projects-
 
-This template should help get you started developing with Tauri, SvelteKit and TypeScript in Vite.
-
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+someone else did it though and it's even better because it's a plugin!!! https://github.com/numa-smells/Aseprite-MC-Skin-Viewer
